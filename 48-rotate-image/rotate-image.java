@@ -11,10 +11,8 @@ class Solution {
         for(int i=n-1; i>=0; i--){
             int k = 0;
             for(int j=0; j<n; j++){
-                if(k < n && l < n){
                     matrix[k][l] = mat[i][j];
                     k++;
-                }
             }
             l++;
         }
