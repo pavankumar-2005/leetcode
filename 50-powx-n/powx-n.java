@@ -3,17 +3,18 @@ class Solution {
         double ans = 1;
         long m = n;
         if(m < 0) m = -m;
-        while (m > 0) {
-            if (m % 2 == 1) {
-                ans = ans * x;
-                m -= 1;
-            } else {
-                m = m / 2;
-                x = x * x;
+        while(m > 0){
+            if(m % 2 == 0){
+                m /= 2;
+                x = x*x;
+            }
+            else{
+                ans *= x;
+                m--;
             }
         }
-        if (n < 0) {
-            ans = 1.0 / (double)ans;
+        if(n < 0){
+            return 1.0 /(double)ans;
         }
         return ans;
     }
