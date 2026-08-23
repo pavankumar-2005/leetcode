@@ -1,19 +1,20 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        StringBuilder sb = new StringBuilder();
-        for(char ch : s.toCharArray()){
-            if(Character.isLetterOrDigit(ch)){
-                sb.append(Character.toLowerCase(ch));
+        String k = s.toLowerCase();
+        String str = "";
+        for(int i=0; i<k.length(); i++){
+            char ch = k.charAt(i);
+            if(Character.isLetter(ch) || Character.isDigit(ch)){
+                str += ch;
             }
         }
-        return cp(sb.toString());
-    }
-    private boolean cp(String s){
-        int l = 0, r = s.length() - 1;
-        while(l < r){
-            if(s.charAt(l) != s.charAt(r)) return false;
-            l++;
-            r--;
+        int i = 0, j = str.length() - 1;
+        while(i <= j){
+            if(str.charAt(i) != str.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
         }
         return true;
     }
