@@ -1,23 +1,21 @@
 class Solution {
-    public boolean check(String s1, String s2){
-        if(s1.length() != s2.length()) return false;
-        int[] fre = new int[26];
-        for(int i=0; i<s1.length(); i++){
-            fre[s1.charAt(i) - 'a']++;
-            fre[s2.charAt(i) - 'a']--;
-        }
-        for(int i=0; i<26; i++){
-            if(fre[i] != 0)return false;
-        }
-        return true;
-    }
     public boolean checkInclusion(String s1, String s2) {
-        int n = s1.length();
-        int m = s2.length();
-        if(n > m) return false;
-        for(int i=0; i<=m - n; i++){
-            String sub = s2.substring(i, (i+n));
-            if(check(s1, sub))return true;
+        int n1 = s1.length();
+        int n2 = s2.length();
+        if(n1 > n2) return false;
+        int[] fre1 = new int[26];
+        int[] fre2 = new int[26];
+        for(int i=0; i<n1; i++){
+            fre1[s1.charAt(i) - 'a']++;
+            fre2[s2.charAt(i) - 'a']++;
+        }
+        if(Arrays.equals(fre1, fre2)) return true;
+        int j = 0;
+        for(int i=n1; i<n2; i++){
+            fre2[s2.charAt(i) - 'a']++;
+            fre2[s2.charAt(j) - 'a']--;
+            if(Arrays.equals(fre1, fre2)) return true;
+            j++;
         }
         return false;
     }
