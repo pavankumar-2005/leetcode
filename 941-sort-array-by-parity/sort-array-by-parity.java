@@ -17,13 +17,6 @@ class Solution {
                 i++;
             }
         }
-        // if(i < j && j < nums.length){
-        //     if(nums[i] % 2 != 0 && nums[j] % 2 == 0){
-        //         int temp = nums[i];
-        //         nums[i] = nums[j];
-        //         nums[j] = temp;
-        //     }
-        // }
         return nums;
     }
 }
