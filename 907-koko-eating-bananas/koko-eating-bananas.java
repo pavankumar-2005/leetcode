@@ -8,9 +8,9 @@ class Solution {
             else{
                 hours += Math.ceil(piles[i] /(double)(maxCap));
             }
-            // if(hours > h){
-            //     return false;
-            // }
+            if(hours > h){
+                return false;
+            }
         }
         return hours <= h;
     }
