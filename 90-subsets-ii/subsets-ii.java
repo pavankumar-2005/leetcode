@@ -1,6 +1,7 @@
 class Solution {
     public void backtrack(int[] nums, int idx, List<List<Integer>> ans, List<Integer> cur){
         ans.add(new ArrayList<>(cur));
+        if(idx == nums.length) return;
         for(int i=idx; i<nums.length; i++){
             if(i != idx && nums[i] == nums[i-1]) continue;
             cur.add(nums[i]);
