@@ -1,36 +1,36 @@
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> ans = new ArrayList<>();
-        ArrayList<Integer> inner = new ArrayList<>();
+        List<Integer> cur = new ArrayList<>();
         Arrays.sort(nums);
         int n = nums.length;
         for(int i=0; i<n; i++){
-            if(i > 0 && nums[i] == nums[i-1])continue;
+            if(i > 0 && nums[i] == nums[i-1]) continue;
             for(int j=i+1; j<n; j++){
-                if(j > i+1 && nums[j] == nums[j-1])continue;
-                int k = j+1;
+                if(j > i+1 && nums[j] == nums[j-1]) continue;
+                int k = j + 1;
                 int l = n - 1;
-                while(k < l){
-                    long sum = nums[i] + nums[j];
-                    sum += nums[k];
-                    sum += nums[l];
-                    if(sum == target){
-                        inner.add(nums[i]);
-                        inner.add(nums[j]);
-                        inner.add(nums[k]);
-                        inner.add(nums[l]);
-                        ans.add(inner);
-                        inner = new ArrayList<>();
+                while(k < l && l > 0){
+                    long sum1 = nums[i] + nums[j];
+                    long sum2 = sum1 + nums[k];
+                    long sum3 = sum2 + nums[l];
+                    if(sum3 < target){
                         k++;
-                        l--;
-                        while(k < l && nums[k] == nums[k-1])k++;
-                        while(l > k && nums[l] == nums[l+1])l--;
                     }
-                    else if(sum > target){
+                    else if(sum3 > target){
                         l--;
                     }
                     else{
+                        cur.add(nums[i]);
+                        cur.add(nums[j]);
+                        cur.add(nums[k]);
+                        cur.add(nums[l]);
                         k++;
+                        l--;
+                        ans.add(new ArrayList<>(cur));
+                        cur = new ArrayList<>();
+                        while(k < l && nums[k] == nums[k-1]) k++;
+                        while(l > k && nums[l] == nums[l+1]) l--;
                     }
                 }
             }
