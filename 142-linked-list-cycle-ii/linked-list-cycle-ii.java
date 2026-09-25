@@ -30,6 +30,6 @@ public class Solution {
             fast = fast.next;
         }
         }
-        return (flag == true ? slow : null);
+        return (flag == true ? fast : null);
     }
 }
