@@ -27,15 +27,16 @@ class Solution {
         }
         ListNode right = prev;
         ListNode left = head;
-        boolean isPalindrome = true;
+        // boolean isPalindrome = true;
         while(right != null){
             if(left.val != right.val){
-                isPalindrome = false;
-                break;
+                // isPalindrome = false;
+                // break;
+                return false;
             }
             left = left.next;
             right = right.next;
         }
-        return isPalindrome;
+        return true;
     }
 }
