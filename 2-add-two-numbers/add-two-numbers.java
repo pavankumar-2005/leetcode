@@ -13,28 +13,23 @@ class Solution {
         ListNode t1 = l1;
         ListNode t2 = l2;
         int sum = 0, a = 0, b = 0, c = 0, d = 0;
-        ListNode dummyHead = new ListNode();
-        ListNode tail = dummyHead;
+        ListNode dummy = new ListNode();
+        ListNode tail = dummy;
         while(t1 != null || t2 != null){
             a = (t1 == null) ? 0 : t1.val;
-            b = (t2 != null) ? t2.val : 0;
+            b = (t2 == null) ? 0 : t2.val;
             sum = a + b + c;
             d = sum % 10;
             c = sum / 10;
             tail.next = new ListNode(d);
             tail = tail.next;
-            if(t1 != null){
-                t1 = t1.next;
-            }
-            if(t2 != null){
-                t2 = t2.next;
-            }
+            if(t1 != null)t1 = t1.next;
+            if(t2 != null)t2 = t2.next;
         }
         if(c > 0){
             tail.next = new ListNode(c);
             tail = tail.next;
         }
-        return dummyHead.next;
-
+        return dummy.next;
     }
 }
