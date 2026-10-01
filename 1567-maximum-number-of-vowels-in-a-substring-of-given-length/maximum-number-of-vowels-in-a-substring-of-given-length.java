@@ -12,7 +12,7 @@ class Solution {
         }
         mc = Math.max(mc, c);
         int i=0, j=k;
-        while(i < j && j < s.length()){
+        while(j < s.length()){
             if(isVowel(s.charAt(i))){
                 c--;
             }
