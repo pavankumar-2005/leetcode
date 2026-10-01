@@ -10,7 +10,7 @@ class Solution {
         while(i < j && j < nums.length){
             sum += nums[j];
             sum -= nums[i];
-            maxAvg = (double)Math.max(sum/(double)k, maxAvg);
+            maxAvg = Math.max(sum/(double)k, maxAvg);
             i++;
             j++;
         }
