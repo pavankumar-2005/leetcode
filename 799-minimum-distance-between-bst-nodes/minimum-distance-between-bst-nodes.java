@@ -14,12 +14,12 @@
  * }
  */
 class Solution {
-    private Integer prev = null;
+    private int prev = -1;
     private int min = Integer.MAX_VALUE;
     public void inorder(TreeNode root){
         if(root == null) return;
         inorder(root.left);
-        if(prev != null){
+        if(prev != -1){
             min = Math.min(min, root.val - prev);
         }
         prev = root.val;
