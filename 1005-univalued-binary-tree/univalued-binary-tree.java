@@ -7,20 +7,21 @@
  *     TreeNode() {}
  *     TreeNode(int val) { this.val = val; }
  *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;z
+ *         this.val = val;
  *         this.left = left;
  *         this.right = right;
  *     }
  * }
  */
 class Solution {
-    public boolean check(TreeNode root, int data){
+    public boolean isValid(TreeNode root, int val){
         if(root == null) return true;
-        if(root.val != data) return false;
-        return check(root.left, data) && check(root.right, data);
+        if(root.val != val) return false;
+        if(!isValid(root.left, val) || !isValid(root.right, val)) return false;
+        return true;
     }
     public boolean isUnivalTree(TreeNode root) {
-        int data = root.val;
-        return check(root, data);
+        int val = root.val;
+        return isValid(root, val);
     }
 }
