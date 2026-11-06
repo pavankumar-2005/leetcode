@@ -14,12 +14,16 @@
  * }
  */
 class Solution {
+    public TreeNode solve(TreeNode root){
+        if(root == null) return null;
+        TreeNode l = solve(root.left);
+        TreeNode r = solve(root.right);
+        root.left = r;
+        root.right = l;
+        return root;
+    }
     public TreeNode invertTree(TreeNode root) {
         if(root == null) return null;
-        TreeNode lc = invertTree(root.left);
-        TreeNode rc = invertTree(root.right);
-        root.left = rc;
-        root.right = lc;
-        return root;
+        return solve(root);
     }
 }
